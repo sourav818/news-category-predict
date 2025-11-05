@@ -63,16 +63,21 @@ def apply_css(dark_mode: bool):
             unsafe_allow_html=True,
         )
     else:
-        st.markdown(
-            """
-            <style>
-            .stApp { background-color: #ffffff; color: #0f1724; }
-            .stButton>button { background-color: #ff4b4b; color: white; }
-            .stDownloadButton>button { background-color: #ff4b4b; color: white; }
-            </style>
-            """,
-            unsafe_allow_html=True,
-        )
+    st.markdown(
+        """
+        <style>
+        .stApp { background-color: #ffffff; color: #0f1724; }
+        h1, h2, h3, h4, h5, h6, p, label, span, div {
+            color: #0f1724 !important;
+        }
+        .stButton>button { background-color: #ff4b4b; color: white; }
+        .stDownloadButton>button { background-color: #ff4b4b; color: white; }
+        .stTextInput>div>div>input, .stTextArea>div>div>textarea { background-color: #f9f9f9; color: #0f1724; }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
 
 # Utility: load dataset if present
 @st.cache_data
@@ -434,4 +439,5 @@ elif page == "Feedback":
         st.download_button("Download feedback CSV", data=fdf.to_csv(index=False).encode("utf-8"), file_name="feedback.csv", mime="text/csv")
     else:
         st.info("No feedback collected yet. Users can provide feedback from the Prediction page.")
+
 
