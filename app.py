@@ -23,7 +23,7 @@ from reportlab.lib import colors
 # ---------------------------
 # Config & Helpers
 # ---------------------------
-st.set_page_config(page_title="News Category Prediction (Enhanced)", page_icon="📰", layout="wide")
+st.set_page_config(page_title="News Category Prediction", page_icon="📰", layout="wide")
 DATASET_PATH = "dataset/BBC_News_Train.csv"
 DEFAULT_MODEL_PATH = "news_category_prediction.pkl"
 FEEDBACK_CSV = "feedback.csv"
@@ -201,7 +201,7 @@ page = st.sidebar.radio("Go to", ["Prediction", "Dataset Insights", "Model Insig
 dark_mode = st.sidebar.checkbox("Dark mode", value=True)
 apply_css(dark_mode)
 
-st.title("📰 News Category Prediction — Enhanced (Core)")
+st.title("📰 News Category Prediction")
 
 # Load models (cached)
 with st.spinner("Loading models..."):
@@ -434,3 +434,4 @@ elif page == "Feedback":
         st.download_button("Download feedback CSV", data=fdf.to_csv(index=False).encode("utf-8"), file_name="feedback.csv", mime="text/csv")
     else:
         st.info("No feedback collected yet. Users can provide feedback from the Prediction page.")
+
